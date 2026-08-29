@@ -31,10 +31,11 @@ jobs:
         run: npm ci
 
       - name: Build with Astro
-        # For a GitHub *project* page (username.github.io/veyra-security),
-        # uncomment and set these so asset paths resolve correctly:
-        #   SITE_URL: https://<user>.github.io
-        #   BASE_PATH: /veyra-security
+        # Project page at https://zouhir-dahbi.github.io/veyra-security
+        # If you move to a custom domain or user page, set BASE_PATH: /
+        env:
+          SITE_URL: https://zouhir-dahbi.github.io
+          BASE_PATH: /veyra-security
         run: npm run build
 
       - name: Upload artifact
