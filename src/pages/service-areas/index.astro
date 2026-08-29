@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { serviceAreas, groupBlurbs } from '../../data/serviceAreas';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const groups = ['Loudoun County', 'Fairfax County & Area', 'Arlington'] as const;
+---
+
+<BaseLayout
+  title="Service Areas | Veyra Security Systems"
+  description="Veyra Security Systems provides professional security camera and access-control installation throughout Northern Virginia, including Loudoun County, Fairfax County, and Arlington."
+>
+  <PageHeader
+    title="Service Areas"
+    sub="Veyra Security Systems provides professional residential and commercial security installation across our Northern Virginia service territory."
+  />
+
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-4 space-y-16">
+      {groups.map((group) => (
+        <div>
+          <h2 class="font-display font-bold text-2xl text-ink mb-2">{group}</h2>
+          <p class="text-slate-600 mb-6 text-sm max-w-3xl">{groupBlurbs[group]}</p>
+          <div class="grid sm:grid-cols-3 gap-6">
+            {serviceAreas.filter((a) => a.group === group).map((a) => (
+              <a href={withBase(`/service-areas/${a.slug}`)} class="card card-hover p-6">
+                <h3 class="font-semibold text-lg text-ink mb-1">{a.city}, VA</h3>
+                <p class="text-sm text-slate-600">Security cameras &amp; access control for {a.city} homes and businesses</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div class="empty-state max-w-3xl text-left">
+        <p class="text-sm">The groupings above are for navigation only and don't represent official county or municipal boundaries — Falls Church, Fairfax, and Arlington are independent jurisdictions under Virginia law. These are our proposed service areas; confirm current coverage with us directly for locations near the edge of our territory. We do not serve Maryland or Washington, D.C. at this time.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

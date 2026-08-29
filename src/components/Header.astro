@@ -1,0 +1,97 @@
+---
+import { navItems } from '../data/nav';
+const { pathname } = Astro.url;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => {
+  if (href.startsWith('#') || href.startsWith('http')) return href;
+  const [path, hash] = href.split('#');
+  const full = `${base}${path === '/' ? '/' : path}`;
+  return hash ? `${full}#${hash}` : full;
+};
+const isActive = (href: string) => {
+  if (href === '/') return pathname === base + '/' || pathname === base || pathname === '/';
+  return pathname.startsWith(base + href);
+};
+---
+
+<header
+  x-data="{ mobileOpen: false, openMenu: null }"
+  class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200"
+>
+  <nav class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href={withBase('/')} class="flex items-center shrink-0">
+        <img
+          src={withBase('/images/vss-horizontal-white-background.png')}
+          alt="Veyra Security Systems"
+          class="h-12 w-auto"
+          width="704"
+          height="163"
+        />
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden xl:flex items-center gap-5 text-sm">
+        {navItems.map((item) =>
+          item.children ? (
+            <div class="relative" @mouseenter="openMenu = $el" @mouseleave="openMenu = null">
+              <a
+                href={withBase(item.href)}
+                class:list={['nav-link flex items-center gap-1', isActive(item.href) && 'active']}
+              >
+                {item.label}
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </a>
+              <div
+                x-show="openMenu === $el.parentElement || openMenu === $el"
+                x-cloak
+                x-transition.opacity
+                class="absolute top-full left-0 pt-3 w-64"
+              >
+                <div class="bg-white border border-slate-200 rounded-xl shadow-lg py-2">
+                  {item.children.map((child) => (
+                    <a href={withBase(child.href)} class="nav-dropdown-link">{child.label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={withBase(item.href)}
+              class:list={['nav-link', isActive(item.href) && 'active']}
+            >
+              {item.label}
+            </a>
+          )
+        )}
+      </div>
+
+      <!-- CTA -->
+      <div class="hidden xl:block shrink-0">
+        <a href={withBase('/contact')} class="btn-primary text-sm px-5 py-2.5 whitespace-nowrap">Schedule an Assessment</a>
+      </div>
+
+      <!-- Mobile toggle -->
+      <button @click="mobileOpen = !mobileOpen" class="xl:hidden p-2 text-slate-700" aria-label="Toggle menu">
+        <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        <svg x-show="mobileOpen" x-cloak class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div x-show="mobileOpen" x-cloak x-transition class="xl:hidden pb-4 border-t border-slate-200 pt-3">
+      <div class="flex flex-col">
+        {navItems.map((item) => (
+          <a
+            href={withBase(item.href)}
+            class:list={['nav-link-mobile', isActive(item.href) && 'active']}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a href={withBase('/contact')} class="btn-primary text-center mt-3">Schedule an Assessment</a>
+      </div>
+    </div>
+  </nav>
+</header>

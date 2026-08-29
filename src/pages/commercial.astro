@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const audiences = [
+  ['Offices & Retail', 'Small businesses, professional offices, retail stores'],
+  ['Medical & Dental', 'Practices with patient areas, records, and controlled access needs'],
+  ['Restaurants & Warehouses', 'Entry, back-of-house, and inventory area coverage'],
+  ['Property Managers', 'Multi-location and multi-tenant coordination'],
+];
+
+const faqs = [
+  { q: 'Can you support multiple locations?', a: "Yes. During the assessment we'll discuss how many locations you have and design coverage, access, and remote viewing consistently across each one." },
+  { q: 'Do you offer ongoing maintenance contracts?', a: "Yes — maintenance and support is one of our core commercial services. We'll go over options that fit your business during your assessment." },
+  { q: 'Do I need to know exactly how many doors and cameras I need?', a: 'No — a rough sense of your property and priorities is enough to get started. Exact counts and placement come out of the on-site assessment.' },
+];
+---
+
+<BaseLayout
+  title="Commercial Security Systems | Veyra Security Systems"
+  description="Professional commercial security cameras and access control for small businesses, offices, retail, and multi-location properties throughout Northern Virginia."
+>
+  <PageHeader
+    eyebrow="Commercial Security"
+    title="Security Systems Built to Scale With Your Business"
+    sub="For offices, retail, medical and dental practices, restaurants, warehouses, and property managers — systems designed for coverage, user management, and long-term reliability."
+  />
+
+  <!-- Audiences (white) -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      {audiences.map(([title, body]) => (
+        <div>
+          <h3 class="font-semibold text-ink mb-1">{title}</h3>
+          <p class="text-sm text-slate-600">{body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Cameras (light gray) -->
+  <section id="cameras" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Commercial Security Cameras</h2>
+        <p class="text-slate-600 mb-6">We design camera coverage around how your property actually operates — entrances, registers, storage, parking, and blind spots — and build in the recording and storage capacity your business needs.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Video surveillance &amp; coverage planning</li>
+          <li class="feature-item">PoE camera systems &amp; NVR recording</li>
+          <li class="feature-item">Remote viewing across locations</li>
+          <li class="feature-item">Reliable, business-grade recording</li>
+        </ul>
+        <a href={withBase('/contact?type=commercial')} class="btn-primary">Schedule a Security Assessment</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_2103632686.jpeg')} alt="Commercial security camera on an office building" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Access control (white) -->
+  <section id="access-control" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_2121774243.jpeg')} alt="Employee using an access control card reader" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Commercial Access Control</h2>
+        <p class="text-slate-600 mb-6">Know who has access to what, and when. We design access control around your staff structure, hours, and the doors that actually need to be controlled.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Controlled entry for staff &amp; visitors</li>
+          <li class="feature-item">User &amp; access management by role</li>
+          <li class="feature-item">Entry history &amp; reporting where supported</li>
+          <li class="feature-item">Scalable across multiple doors and locations</li>
+        </ul>
+        <a href={withBase('/contact?type=commercial')} class="btn-outline">Schedule a Security Assessment</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upgrades (light gray) -->
+  <section id="upgrades" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Security System Upgrades</h2>
+        <p class="text-slate-600 mb-6">Modernizing an aging system without disrupting the business is a common request — we assess what's in place, plan the transition, and keep documentation clean throughout.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Existing system modernization</li>
+          <li class="feature-item">Camera &amp; recorder replacement</li>
+          <li class="feature-item">Coverage gap analysis</li>
+          <li class="feature-item">System organization &amp; documentation</li>
+        </ul>
+      </div>
+      <img src={withBase('/images/AdobeStock_2117320883.jpeg')} alt="Technician terminating network cabling for a system upgrade" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Maintenance (white) -->
+  <section id="maintenance" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_2029345533.jpeg')} alt="Technician servicing commercial network equipment" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Maintenance &amp; Support</h2>
+        <p class="text-slate-600 mb-6">A security system is only useful if it keeps working. We offer ongoing maintenance and support so cameras stay online, storage stays healthy, and access permissions stay current as your team changes.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Ongoing system health checks</li>
+          <li class="feature-item">Access permission updates</li>
+          <li class="feature-item">Long-term support relationship</li>
+        </ul>
+        <a href={withBase('/contact?type=commercial')} class="btn-outline">Ask About Maintenance Plans</a>
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading="Every Business Gets the Same Process" subheading="Assessment to support — the same disciplined steps on every property." />
+
+  <FaqAccordion heading="Commercial FAQ" faqs={faqs} />
+
+  <CtaBanner heading="Let's plan a system that fits how your business runs." href="/contact?type=commercial" />
+</BaseLayout>

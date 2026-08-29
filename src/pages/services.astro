@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const sections = [
+  {
+    id: 'cameras',
+    title: 'Security Cameras',
+    body: 'Professionally planned, PoE-based camera systems with NVR recording and remote viewing. We design coverage around your property first, then select equipment to match — not the other way around.',
+    img: '/images/AdobeStock_1282055483.jpeg',
+    alt: 'Security camera mounted on a building exterior',
+    links: [['For Homes', '/residential#cameras'], ['For Businesses', '/commercial#cameras']],
+  },
+  {
+    id: 'access-control',
+    title: 'Access Control',
+    body: 'Electronic entry, smart locks, mobile credentials, and access management — sized to fit anything from a single front door to a multi-door commercial property.',
+    img: '/images/AdobeStock_769078732.jpeg',
+    alt: 'Unlocking a smart door lock with a mobile phone',
+    links: [['For Homes', '/residential#access-control'], ['For Businesses', '/commercial#access-control']],
+    reverse: true,
+  },
+  {
+    id: 'upgrades',
+    title: 'Security System Upgrades',
+    body: "Modernizing an aging or unreliable system — residential or commercial — without starting from zero. We assess what's already in place before recommending what to replace.",
+    img: '/images/AdobeStock_1909113338.jpeg',
+    alt: 'Technician working on wiring during a system upgrade',
+    links: [['For Homes', '/residential#upgrades'], ['For Businesses', '/commercial#upgrades']],
+  },
+  {
+    id: 'maintenance',
+    title: 'Maintenance & Support',
+    body: 'Ongoing reliability for systems already in place — health checks, permission updates, and a point of contact when something needs attention.',
+    img: '/images/AdobeStock_2029345533.jpeg',
+    alt: 'Technician servicing security system equipment',
+    links: [['Learn More', '/commercial#maintenance']],
+    reverse: true,
+  },
+  {
+    id: 'assessments',
+    title: 'Security Assessments',
+    body: "A no-pressure, in-person look at your property. We ask about how you use the space and what concerns you, then design a system — you don't need to know equipment specifications ahead of time.",
+    img: '/images/AdobeStock_1829282770.jpeg',
+    alt: 'Technician and homeowner discussing a security assessment',
+    links: [['Schedule a Security Assessment', '/contact']],
+    primary: true,
+  },
+];
+---
+
+<BaseLayout
+  title="Our Services | Veyra Security Systems"
+  description="Security cameras, access control, system upgrades, maintenance, and security assessments for homes and businesses in Northern Virginia."
+>
+  <PageHeader
+    title="Our Services"
+    sub="Everything we do, in plain terms. For how each service applies specifically to your home or business, see our Residential and Commercial pages."
+  />
+
+  {sections.map((s, i) => (
+    <section id={s.id} class:list={[i % 2 === 0 ? 'bg-white' : 'bg-slate-50', 'py-20 scroll-mt-24']}>
+      <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+        <div class:list={[s.reverse && 'order-2 lg:order-1']}>
+          {s.reverse ? (
+            <img src={withBase(s.img)} alt={s.alt} class="rounded-2xl w-full shadow-card" />
+          ) : (
+            <>
+              <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">{s.title}</h2>
+              <p class="text-slate-600 mb-6">{s.body}</p>
+              <div class="flex flex-wrap gap-3">
+                {s.links.map(([label, href]) => (
+                  <a href={withBase(href)} class:list={[s.primary ? 'btn-primary' : 'btn-outline']}>{label}</a>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+        <div class:list={[s.reverse && 'order-1 lg:order-2']}>
+          {s.reverse ? (
+            <>
+              <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">{s.title}</h2>
+              <p class="text-slate-600 mb-6">{s.body}</p>
+              <div class="flex flex-wrap gap-3">
+                {s.links.map(([label, href]) => (
+                  <a href={withBase(href)} class="btn-outline">{label}</a>
+                ))}
+              </div>
+            </>
+          ) : (
+            <img src={withBase(s.img)} alt={s.alt} class="rounded-2xl w-full shadow-card" />
+          )}
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import { serviceAreas } from '../../data/serviceAreas';
+
+export function getStaticPaths() {
+  return serviceAreas.map((area) => ({
+    params: { city: area.slug },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const nearby = area.nearby
+  .map((slug) => serviceAreas.find((a) => a.slug === slug))
+  .filter(Boolean) as typeof serviceAreas;
+---
+
+<BaseLayout
+  title={`Security Camera & Access Control Installation in ${area.city}, VA | Veyra Security Systems`}
+  description={area.metaDescription}
+>
+  <PageHeader
+    eyebrow={`Serving ${area.city}`}
+    title={`Security Systems for Homes & Businesses in ${area.city}, VA`}
+    sub={area.intro}
+  />
+
+  <!-- Residential + Commercial (white) -->
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8">
+      <div class="card p-8">
+        <h2 class="font-display font-bold text-2xl text-ink mb-3">Residential Security in {area.city}</h2>
+        <p class="text-slate-600 mb-6">{area.residential}</p>
+        <a href={withBase('/residential')} class="btn-outline">Residential Security</a>
+      </div>
+      <div class="card p-8">
+        <h2 class="font-display font-bold text-2xl text-ink mb-3">Commercial Security in {area.city}</h2>
+        <p class="text-slate-600 mb-6">{area.commercial}</p>
+        <a href={withBase('/commercial')} class="btn-outline">Commercial Security</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we install (light gray) -->
+  <section class="bg-slate-50 py-20">
+    <div class="container mx-auto px-4 grid md:grid-cols-3 gap-6">
+      <div class="card p-6">
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Security Camera Systems</h3>
+        <p class="text-slate-600 text-sm mb-4">From a single entry point to full property coverage, we plan placement around how a {area.city} home or business is actually used, then handle wiring, mounting, and configuration.</p>
+        <a href={withBase('/services#cameras')} class="text-primary text-sm font-semibold hover:underline">Security cameras &rarr;</a>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">Access Control</h3>
+        <p class="text-slate-600 text-sm mb-4">From a smart lock on a single door to multi-door access management, we design electronic entry so {area.city} property owners know who's coming and going.</p>
+        <a href={withBase('/services#access-control')} class="text-primary text-sm font-semibold hover:underline">Access control &rarr;</a>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-display font-semibold text-xl text-ink mb-2">System Upgrades</h3>
+        <p class="text-slate-600 text-sm mb-4">Already have cameras or access control in {area.city} that are unreliable or outdated? We assess what's there, then recommend what's worth keeping versus replacing.</p>
+        <a href={withBase('/services#upgrades')} class="text-primary text-sm font-semibold hover:underline">System upgrades &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading={`Our Process in ${area.city}`} subheading="The same disciplined process for every property, residential or commercial." />
+
+  <!-- Areas served (white) -->
+  {nearby.length > 0 && (
+    <section class="bg-white py-16">
+      <div class="container mx-auto px-4 text-center max-w-2xl">
+        <h2 class="font-display font-bold text-2xl text-ink mb-3">Areas Served Near {area.city}</h2>
+        <p class="text-slate-600 mb-6">
+          We also serve homeowners and businesses in {nearby.map((n, i) => (
+            <>{i > 0 && ' and '}<a href={withBase(`/service-areas/${n.slug}`)} class="text-primary hover:underline">{n.city}</a></>
+          ))}. See our full <a href={withBase('/service-areas')} class="text-primary hover:underline">Northern Virginia service area</a>.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <FaqAccordion heading={`${area.city} Security FAQ`} faqs={area.faqs} />
+
+  <CtaBanner heading={`Schedule a Security Assessment in ${area.city}`} sub="Tell us about your property and we'll walk you through exactly what we'd recommend and why — no pressure, no fixed package." />
+</BaseLayout>

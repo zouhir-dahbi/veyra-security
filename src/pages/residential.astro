@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const outcomes = [
+  ['Visibility', "Know what's happening around your property."],
+  ['Control', 'Manage cameras and access from anywhere.'],
+  ['Reliability', 'Coverage that works when you need it to.'],
+  ['Convenience', 'One system, sensibly set up — not ten apps.'],
+  ['Professional Install', 'Planned, wired, and tested by someone who does this daily.'],
+];
+
+const faqs = [
+  { q: 'How many cameras does a typical home need?', a: "It depends entirely on your property — lot size, entry points, and what you actually want visibility on. That's exactly what the assessment is for; we don't recommend a fixed number before seeing your home." },
+  { q: 'Do I need a subscription to view my cameras remotely?', a: "We'll walk you through local versus cloud storage options and what each involves during your assessment, so you can decide what fits your home and budget." },
+  { q: 'Can you replace my old DIY cameras with a real system?', a: "Yes — this is one of the most common residential upgrades we do. We'll assess your existing setup and recommend what to keep, replace, or rewire." },
+];
+---
+
+<BaseLayout
+  title="Residential Security Systems | Veyra Security Systems"
+  description="Professionally installed security cameras and access control for homes in Northern Virginia. Outdoor and indoor coverage, remote viewing, and camera system upgrades."
+>
+  <PageHeader
+    eyebrow="Residential Security"
+    title="Security Systems Designed Around Your Home"
+    sub="A professionally installed system your family can actually rely on — not a pile of disconnected DIY devices. Visibility, control, and reliability, without the fear-based sales pitch."
+  />
+
+  <!-- Outcomes (white) -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 text-center">
+        {outcomes.map(([title, body]) => (
+          <div>
+            <h3 class="font-display font-semibold text-lg text-ink mb-1">{title}</h3>
+            <p class="text-sm text-slate-600">{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cameras (light gray) -->
+  <section id="cameras" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Residential Security Cameras</h2>
+        <p class="text-slate-600 mb-6">Whether you're covering a front door, a driveway, a garage, or the full perimeter of your property, we plan camera placement around how you actually use your home — then install it cleanly and configure it correctly.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Outdoor security cameras</li>
+          <li class="feature-item">Indoor cameras where appropriate</li>
+          <li class="feature-item">Door, entry, and driveway coverage</li>
+          <li class="feature-item">Garage and perimeter coverage</li>
+          <li class="feature-item">PoE camera systems &amp; NVR recording</li>
+          <li class="feature-item">Remote and mobile viewing</li>
+          <li class="feature-item">Video storage planning</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-primary">Schedule a Security Assessment</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <img src={withBase('/images/AdobeStock_1659686480.jpeg')} alt="Outdoor security camera on a home at dusk" class="rounded-2xl w-full h-full object-cover shadow-card" />
+        <img src={withBase('/images/AdobeStock_139050781.jpeg')} alt="Remote camera viewing on a tablet" class="rounded-2xl w-full h-full object-cover shadow-card" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Access control (white) -->
+  <section id="access-control" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_1760958129.jpeg')} alt="Unlocking a smart entry lock with a mobile phone" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Residential Access Control</h2>
+        <p class="text-slate-600 mb-6">Where it makes sense for your home, we plan and install electronic entry so you know who's coming and going — without juggling extra keys.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Electronic entry &amp; smart locks</li>
+          <li class="feature-item">Gate or door access where appropriate</li>
+          <li class="feature-item">Mobile credentials where supported</li>
+          <li class="feature-item">Access management &amp; entry history</li>
+        </ul>
+        <p class="text-sm text-slate-500">We evaluate what's appropriate for your home during the assessment — not every property needs or benefits from electronic access control.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upgrades (light gray) -->
+  <section id="upgrades" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Security Camera Upgrades</h2>
+        <p class="text-slate-600 mb-6">Already have cameras that are unreliable, poorly placed, or simply outdated? We assess what's there first, then recommend what's worth keeping versus replacing.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Existing camera system replacement</li>
+          <li class="feature-item">Additional camera installation</li>
+          <li class="feature-item">Rewiring &amp; PoE conversions</li>
+          <li class="feature-item">Storage &amp; recording upgrades</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-outline">Schedule a Security Assessment</a>
+      </div>
+      <div>
+        <img src={withBase('/images/AdobeStock_1829282770.jpeg')} alt="Technician installing a security camera at a home" class="rounded-2xl w-full shadow-card" />
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading="Every Home Gets the Same Process" subheading="Assessment to support — the same disciplined steps on every property." />
+
+  <FaqAccordion heading="Residential FAQ" faqs={faqs} />
+
+  <CtaBanner heading="See exactly what we'd recommend for your home." href="/contact?type=residential" />
+</BaseLayout>

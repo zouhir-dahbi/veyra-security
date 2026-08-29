@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+---
+
+<BaseLayout
+  title="Schedule a Security Assessment | Veyra Security Systems"
+  description="Schedule a professional security assessment for your home or business in Northern Virginia. Tell us about your property and we'll follow up to plan next steps."
+>
+  <PageHeader
+    center={true}
+    title="Schedule a Security Assessment"
+    sub="Tell us a bit about your property. No technical knowledge required — we'll follow up to plan next steps."
+  />
+
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 max-w-2xl">
+      <div x-data="assessmentForm()" x-init="init()">
+        <!-- Success -->
+        <div x-show="submitted" x-cloak class="card p-12 text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+            <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+          </div>
+          <h2 class="font-display font-bold text-2xl text-ink mb-2">Thanks — we've got it.</h2>
+          <p class="text-slate-600">We'll follow up to schedule your assessment and answer any questions before we visit.</p>
+        </div>
+
+        <!-- Form -->
+        <form x-show="!submitted" @submit.prevent="submitForm()" method="POST" action="https://formspree.io/f/YOUR_FORM_ID" class="space-y-8">
+          {/* NOTE: replace the Formspree action (or wire your own handler) before publishing —
+              a static host cannot process form submissions server-side. */}
+
+          <div>
+            <label class="form-label">I'm looking for security for a...</label>
+            <div class="flex gap-4">
+              <label class="type-toggle" :class="{ selected: customerType === 'residential' }">
+                <input type="radio" name="customer_type" value="residential" x-model="customerType" class="sr-only" /> Home
+              </label>
+              <label class="type-toggle" :class="{ selected: customerType === 'commercial' }">
+                <input type="radio" name="customer_type" value="commercial" x-model="customerType" class="sr-only" /> Business
+              </label>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div><label class="form-label" for="name">Full Name</label><input class="form-input" type="text" id="name" name="name" required /></div>
+            <div><label class="form-label" for="email">Email</label><input class="form-input" type="email" id="email" name="email" required /></div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div><label class="form-label" for="phone">Phone</label><input class="form-input" type="tel" id="phone" name="phone" /></div>
+            <div><label class="form-label" for="city">City / Service Area</label><input class="form-input" type="text" id="city" name="city" placeholder="e.g. Ashburn, VA" /></div>
+          </div>
+
+          <!-- Residential -->
+          <div x-show="customerType === 'residential'" x-cloak class="space-y-6 border-t border-slate-200 pt-6">
+            <h3 class="font-display font-semibold text-lg text-ink">About Your Home</h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label class="form-label" for="r_property_type">Property Type</label>
+                <select class="form-input" id="r_property_type" name="property_type">
+                  <option value="">Select one</option><option>Single-family home</option><option>Townhouse</option><option>Condo / apartment</option><option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" for="r_existing">Existing Security System?</label>
+                <select class="form-input" id="r_existing" name="existing_system">
+                  <option value="">Select one</option><option>No existing system</option><option>Yes, DIY cameras</option><option>Yes, professionally installed</option><option>Not sure</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="r_cameras">Roughly How Many Cameras Are You Considering?</label>
+              <select class="form-input" id="r_cameras" name="camera_count">
+                <option value="">Not sure yet</option><option>1&ndash;2</option><option>3&ndash;4</option><option>5&ndash;8</option><option>More than 8</option>
+              </select>
+            </div>
+            <div><label class="form-label" for="r_areas">Areas of Concern</label><textarea class="form-input" id="r_areas" name="areas_of_concern" rows="3" placeholder="e.g. front door, driveway, backyard, garage"></textarea></div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label class="form-label" for="r_new_upgrade">New System or Upgrade?</label>
+                <select class="form-input" id="r_new_upgrade" name="new_or_upgrade"><option value="">Select one</option><option>New system</option><option>Upgrading existing system</option></select>
+              </div>
+              <div>
+                <label class="form-label" for="r_timeline">Desired Timeline</label>
+                <select class="form-input" id="r_timeline" name="timeline"><option value="">Select one</option><option>As soon as possible</option><option>Within a month</option><option>Just exploring options</option></select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Commercial -->
+          <div x-show="customerType === 'commercial'" x-cloak class="space-y-6 border-t border-slate-200 pt-6">
+            <h3 class="font-display font-semibold text-lg text-ink">About Your Business</h3>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div><label class="form-label" for="c_property_type">Business / Property Type</label><input class="form-input" type="text" id="c_property_type" name="business_type" placeholder="e.g. retail, office, warehouse" /></div>
+              <div>
+                <label class="form-label" for="c_locations">Number of Locations</label>
+                <select class="form-input" id="c_locations" name="location_count"><option value="">Select one</option><option>1</option><option>2&ndash;3</option><option>4 or more</option></select>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="c_existing">Existing Security System?</label>
+              <select class="form-input" id="c_existing" name="existing_system"><option value="">Select one</option><option>No existing system</option><option>Yes, needs modernization</option><option>Yes, working fine, adding to it</option><option>Not sure</option></select>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label class="form-label" for="c_cameras">Approximate Number of Cameras</label>
+                <select class="form-input" id="c_cameras" name="camera_count"><option value="">Not sure yet</option><option>1&ndash;4</option><option>5&ndash;10</option><option>11&ndash;20</option><option>More than 20</option></select>
+              </div>
+              <div>
+                <label class="form-label" for="c_doors">Number of Controlled Doors</label>
+                <select class="form-input" id="c_doors" name="door_count"><option value="">Not sure yet / none yet</option><option>1&ndash;2</option><option>3&ndash;5</option><option>More than 5</option></select>
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label class="form-label" for="c_new_upgrade">New Installation or Upgrade?</label>
+                <select class="form-input" id="c_new_upgrade" name="new_or_upgrade"><option value="">Select one</option><option>New installation</option><option>Upgrading existing system</option></select>
+              </div>
+              <div>
+                <label class="form-label" for="c_timeline">Desired Timeline</label>
+                <select class="form-input" id="c_timeline" name="timeline"><option value="">Select one</option><option>As soon as possible</option><option>Within a month</option><option>Just exploring options</option></select>
+              </div>
+            </div>
+          </div>
+
+          <div><label class="form-label" for="notes">Anything else we should know?</label><textarea class="form-input" id="notes" name="notes" rows="3"></textarea></div>
+
+          <button type="submit" class="btn-primary w-full text-lg">Schedule My Assessment</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    function assessmentForm() {
+      return {
+        customerType: null,
+        submitted: false,
+        init() {
+          const params = new URLSearchParams(window.location.search);
+          const type = params.get('type');
+          if (type === 'residential' || type === 'commercial') this.customerType = type;
+        },
+        submitForm() {
+          // Client-side only for now — wire up to the Formspree action
+          // (or your preferred handler) before publishing.
+          this.submitted = true;
+        },
+      };
+    }
+  </script>
+</BaseLayout>
