@@ -21,6 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          # Enable GitHub Pages automatically if it isn't already
+          enablement: true
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
