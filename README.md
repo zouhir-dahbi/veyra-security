@@ -60,7 +60,8 @@ Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds with Ast
 This site intentionally ships without certain content until real, verified information exists. **Do not replace these with fabricated info:**
 
 - [ ] Replace the Formspree placeholder in `src/pages/contact.astro` (`action="https://formspree.io/f/YOUR_FORM_ID"`) with a real form handler. Static hosting can't process form submissions server-side.
-- [ ] Add a real phone number and email (footer currently says "Phone and email will be published once finalized").
+- [x] Phone number wired in (header call button, footer, contact page) — single-sourced in `src/data/site.ts`. Still add a real email address.
+- [ ] Projects and Resources pages were removed until there's real content — re-add `src/pages/projects.astro` / `resources.astro` and their `src/data/nav.ts` + footer links when ready.
 - [ ] Do **not** add "Licensed," "Insured," "Certified," "Bonded," "Authorized," or "Approved" anywhere until verified documentation exists.
 - [ ] Do **not** add reviews/testimonials until they are real.
 - [ ] Do **not** add a street address or "located in [city]" language unless a real business location is confirmed.
