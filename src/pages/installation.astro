@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const faqs = [
+  { q: 'Do you supply the TV mount and hardware, or do I need to buy it?', a: "Either works — we can supply appropriate mounting hardware or install using one you've already purchased." },
+  { q: 'Can you conceal the cables so nothing is visible?', a: "In most cases, yes. We route cable through the wall or use cord covers depending on the wall type and what you want the finished result to look like." },
+  { q: 'Can you handle several projects in one visit?', a: "Yes — TV mounting, a smart lock, and Wi-Fi troubleshooting in the same appointment is a common request. Tell us what's on your list and we'll plan the visit around it." },
+  { q: 'Do you only do TV mounting, or other equipment too?', a: "We mount and install a range of equipment — TVs, soundbars, cameras, access points, and network gear — not just televisions." },
+];
+---
+
+<BaseLayout
+  title="Technology Installation & TV Mounting | Veyra Home Technology"
+  description="TV mounting, soundbar installation, wire concealment, cable management, and technology installation for homes and small businesses in Northern Virginia."
+>
+  <PageHeader
+    eyebrow="Installation"
+    title="Clean Installation Without the DIY Frustration"
+    sub="TV mounting, cable management, and equipment installation — done cleanly and correctly the first time."
+  />
+
+  <!-- TV mounting (white) -->
+  <section id="tv-mounting" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">TV &amp; Soundbar Mounting</h2>
+        <p class="text-slate-600 mb-6">A TV mounted at the right height, secured properly for the wall type, with cables concealed — not left hanging. We measure, mount, and finish the job so it looks intentional.</p>
+        <ul class="mb-8">
+          <li class="feature-item">TV mounting, any wall type</li>
+          <li class="feature-item">Soundbar mounting</li>
+          <li class="feature-item">Wire concealment</li>
+          <li class="feature-item">Device &amp; equipment mounting</li>
+        </ul>
+        <a href={withBase('/contact')} class="btn-primary">Request Service</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_1829282770.jpeg')} alt="Technician mounting equipment on a wall" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Cable management (light gray) -->
+  <section id="cable-management" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_1909113338.jpeg')} alt="Technician organizing wiring" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Wire &amp; Cable Management</h2>
+        <p class="text-slate-600 mb-6">Tangled cables behind the TV or under the desk aren't just messy — they're harder to troubleshoot later. We clean up existing wiring and route new cable so everything stays organized.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Cable concealment &amp; routing</li>
+          <li class="feature-item">Before/after cable cleanup</li>
+          <li class="feature-item">Network &amp; equipment organization</li>
+        </ul>
+        <a href={withBase('/contact')} class="btn-outline">Request Service</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology installation (white) -->
+  <section id="technology-installation" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Technology Installation</h2>
+        <p class="text-slate-600 mb-6">Cameras, access points, network equipment, and home-office gear — mounted, wired, and configured properly. Have a list of technology projects? We'll work through it in one visit.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Camera &amp; access-point mounting</li>
+          <li class="feature-item">Network equipment mounting</li>
+          <li class="feature-item">Home-office setup</li>
+          <li class="feature-item">Smart-device installation</li>
+        </ul>
+        <a href={withBase('/contact')} class="btn-outline">Request Service</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_2029345533.jpeg')} alt="Technician setting up home technology equipment" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading="Sized to the Job" subheading="A TV mount gets a quick, focused visit — a full project list gets the full process. Same care either way." />
+
+  <FaqAccordion heading="Installation FAQ" faqs={faqs} />
+
+  <CtaBanner heading="Have a list of projects? We'll work through it." sub="TV mounting, a smart lock, Wi-Fi troubleshooting — tell us what you need done." href="/contact" />
+</BaseLayout>

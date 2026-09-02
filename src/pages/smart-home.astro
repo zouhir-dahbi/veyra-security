@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const faqs = [
+  { q: 'Do I need to already own smart-home devices?', a: "No. We can recommend and supply devices during the consultation, or install and configure devices you've already bought — whichever fits." },
+  { q: 'Will my smart devices actually work together?', a: "That's a big part of what we plan for. We set up your ecosystem (Alexa, Google Home, or Apple Home) so devices talk to each other and to routines you actually use." },
+  { q: 'Can you fix devices that keep disconnecting?', a: "Yes — smart-device troubleshooting is a common request, and it's often a Wi-Fi or network issue rather than the device itself. We diagnose the actual cause." },
+];
+---
+
+<BaseLayout
+  title="Smart Home Installation | Veyra Home Technology"
+  description="Smart lock, video doorbell, thermostat, and lighting installation with proper configuration and automation setup for homes in Northern Virginia."
+>
+  <PageHeader
+    eyebrow="Smart Home"
+    title="Make Your Devices Work Together"
+    sub="Smart locks, doorbells, thermostats, lighting, and sensors — installed, configured, and set up to actually work together, not just sit in separate apps."
+  />
+
+  <!-- Installation (white) -->
+  <section id="installation" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Smart Home Installation</h2>
+        <p class="text-slate-600 mb-6">From a single smart thermostat to a house full of connected devices, we install and configure each one properly — correct placement, correct wiring, correct setup in the app — instead of leaving you to figure it out.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Smart thermostats</li>
+          <li class="feature-item">Smart lighting &amp; switches</li>
+          <li class="feature-item">Smart sensors</li>
+          <li class="feature-item">Garage-door controllers</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_1760958129.jpeg')} alt="Homeowner controlling a smart-home device from a phone" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Locks & doorbells (light gray) -->
+  <section id="locks-doorbells" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_769078732.jpeg')} alt="Unlocking a smart door lock with a mobile phone" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Smart Locks &amp; Video Doorbells</h2>
+        <p class="text-slate-600 mb-6">Know who's at the door and control access without juggling keys. We install and configure smart locks and video doorbells so they're reliable and properly connected to your network.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Smart lock installation &amp; setup</li>
+          <li class="feature-item">Video doorbell installation</li>
+          <li class="feature-item">Mobile access &amp; notifications configured</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-outline">Request Service</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Devices & automation (white) -->
+  <section id="devices-automation" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Devices &amp; Automation</h2>
+        <p class="text-slate-600 mb-6">Alexa, Google Home, or Apple Home integration and automation routines — set up so your devices work together the way you actually want, not just individually.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Alexa / Google Home / Apple Home integration</li>
+          <li class="feature-item">Automation routines</li>
+          <li class="feature-item">Device configuration</li>
+          <li class="feature-item">Smart-device troubleshooting</li>
+        </ul>
+        <p class="text-sm text-slate-500">We recommend what fits your home and budget — not every device or platform is a good fit for every household.</p>
+      </div>
+      <img src={withBase('/images/AdobeStock_1909113338.jpeg')} alt="Technician configuring a smart-home connection" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading="Every Home Gets the Same Process" subheading="Assessment to support — right-sized for a single device or a whole-home setup." />
+
+  <FaqAccordion heading="Smart Home FAQ" faqs={faqs} />
+
+  <CtaBanner heading="Tell us what you're trying to connect." sub="No pressure, no fixed package — just a plan for your home." href="/contact?type=residential" />
+</BaseLayout>

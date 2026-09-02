@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const audiences = [
+  ['Offices & Retail', 'Small businesses, professional offices, retail stores'],
+  ['Medical & Dental', 'Practices with patient areas, records, and controlled access needs'],
+  ['Restaurants & Warehouses', 'Entry, back-of-house, and inventory area coverage'],
+  ['Property Managers', 'Multi-location and multi-tenant coordination'],
+];
+
+const services = [
+  ['Wi-Fi & Networking', 'Reliable Wi-Fi, wired access points, and Ethernet throughout your space', '/wifi-networking'],
+  ['Security Cameras', 'PoE camera systems, NVR recording, and remote viewing', '/security'],
+  ['Access Control', 'Electronic entry, mobile credentials, and entry history', '/security#smart-security'],
+  ['Technology Installation', 'TV mounting, equipment organization, and clean cable management', '/installation'],
+];
+
+const faqs = [
+  { q: 'Can you support multiple locations?', a: "Yes. During the consultation we'll discuss how many locations you have and design connectivity, coverage, and access consistently across each one." },
+  { q: 'Do you offer ongoing maintenance and support?', a: "Yes — maintenance and support is one of our core small-business services. We'll go over options that fit your business during your consultation." },
+  { q: 'Do I need to know exactly what equipment I need?', a: 'No — a rough sense of your property and priorities is enough to get started. Exact recommendations come out of the on-site assessment.' },
+  { q: 'Can you handle Wi-Fi, cameras, and installation in one visit?', a: "Often, yes. Many small businesses have a list of technology tasks — we plan the visit around everything you need handled." },
+];
+---
+
+<BaseLayout
+  title="Small Business Technology | Veyra Home Technology"
+  description="Wi-Fi and networking, security cameras, access control, and technology installation for small businesses, offices, and multi-location properties throughout Northern Virginia."
+>
+  <PageHeader
+    eyebrow="Small Business"
+    title="Technology Built to Support How Your Business Runs"
+    sub="For offices, retail, medical and dental practices, restaurants, warehouses, and property managers — Wi-Fi, cameras, access control, and installation designed for reliability and easy management."
+  />
+
+  <!-- Audiences (white) -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      {audiences.map(([title, body]) => (
+        <div>
+          <h3 class="font-semibold text-ink mb-1">{title}</h3>
+          <p class="text-sm text-slate-600">{body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Four pillars for business (light gray) -->
+  <section class="bg-slate-50 py-20">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">What We Handle for Small Businesses</h2>
+        <p class="text-slate-600 text-lg">The same four pillars we bring to homes, sized and configured for a working business.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {services.map(([title, body, href]) => (
+          <a href={withBase(href)} class="card card-hover p-6">
+            <h3 class="font-display font-semibold text-lg text-ink mb-2">{title}</h3>
+            <p class="text-sm text-slate-600">{body}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Networking (white) -->
+  <section id="networking" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Business Wi-Fi &amp; Networking</h2>
+        <p class="text-slate-600 mb-6">Reliable connectivity across your whole space — for staff, point-of-sale systems, cameras, and guest Wi-Fi — with wiring and equipment organized so it's easy to maintain.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Whole-space Wi-Fi coverage</li>
+          <li class="feature-item">Wired access points &amp; PoE networking</li>
+          <li class="feature-item">Ethernet installation &amp; structured cabling</li>
+          <li class="feature-item">Network racks &amp; equipment organization</li>
+        </ul>
+        <a href={withBase('/contact?type=commercial')} class="btn-primary">Request Service</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_2117320883.jpeg')} alt="Technician terminating structured network cabling" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Cameras (light gray) -->
+  <section id="cameras" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_2103632686.jpeg')} alt="Commercial security camera on an office building" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Security Cameras</h2>
+        <p class="text-slate-600 mb-6">We design camera coverage around how your property actually operates — entrances, registers, storage, parking, and blind spots — and build in the recording and storage capacity your business needs.</p>
+        <ul class="mb-8">
+          <li class="feature-item">PoE camera systems &amp; NVR recording</li>
+          <li class="feature-item">Remote viewing across locations</li>
+          <li class="feature-item">Reliable, business-grade recording</li>
+        </ul>
+        <a href={withBase('/contact?type=commercial')} class="btn-outline">Request Service</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Access control (white) -->
+  <section id="access-control" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Access Control</h2>
+        <p class="text-slate-600 mb-6">Know who has access to what, and when. We design access control around your staff structure, hours, and the doors that actually need to be controlled.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Controlled entry for staff &amp; visitors</li>
+          <li class="feature-item">User &amp; access management by role</li>
+          <li class="feature-item">Entry history &amp; reporting where supported</li>
+          <li class="feature-item">Scalable across multiple doors and locations</li>
+        </ul>
+      </div>
+      <img src={withBase('/images/AdobeStock_2121774243.jpeg')} alt="Employee using an access control card reader" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Installation & upgrades (light gray) -->
+  <section id="installation" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_2029345533.jpeg')} alt="Technician servicing commercial network equipment" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Installation &amp; Upgrades</h2>
+        <p class="text-slate-600 mb-6">TV and display mounting, equipment organization, and modernizing an aging system without disrupting the business — we assess what's in place, plan the transition, and keep documentation clean throughout.</p>
+        <ul class="mb-8">
+          <li class="feature-item">TV &amp; display mounting</li>
+          <li class="feature-item">Network &amp; equipment organization</li>
+          <li class="feature-item">Existing system modernization</li>
+          <li class="feature-item">Ongoing maintenance &amp; support</li>
+        </ul>
+        <a href={withBase('/contact?type=commercial')} class="btn-outline">Ask About Maintenance Plans</a>
+      </div>
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading="Every Business Gets the Same Process" subheading="Assessment to support — the same disciplined steps on every property." />
+
+  <FaqAccordion heading="Small Business FAQ" faqs={faqs} />
+
+  <CtaBanner heading="Let's plan technology that fits how your business runs." href="/contact?type=commercial" />
+</BaseLayout>

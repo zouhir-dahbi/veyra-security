@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
+
+const faqs = [
+  { q: "Why doesn't my Wi-Fi reach every room?", a: "Usually it's distance, walls, or interference the router alone can't overcome. We assess your layout and add access points or mesh coverage where they'll actually fix the dead zone, instead of guessing." },
+  { q: 'Do you install wired access points or just mesh systems?', a: "Both — whichever fits your home. Wired access points are generally more reliable for larger homes or heavy use, and we can run the Ethernet needed to support them." },
+  { q: 'Can you add Ethernet to a room without existing wiring?', a: "In most cases, yes. We plan cable routing during the assessment — attics, crawl spaces, and closets usually make this straightforward." },
+  { q: 'Do you work with UniFi or similar networking equipment?', a: "We install and configure UniFi and other mainstream consumer/prosumer networking equipment. We're not an authorized reseller or certified partner of any manufacturer." },
+];
+---
+
+<BaseLayout
+  title="Wi-Fi & Networking | Veyra Home Technology"
+  description="Whole-home Wi-Fi, dead-zone correction, mesh systems, Ethernet, and network cleanup for homes and small businesses in Northern Virginia."
+>
+  <PageHeader
+    eyebrow="Wi-Fi & Networking"
+    title="Reliable Connectivity Throughout Your Property"
+    sub="Wi-Fi not reaching every room? Devices constantly dropping offline? We design and install networks that actually cover your space, wired and wireless."
+  />
+
+  <!-- Whole-home wifi (white) -->
+  <section id="whole-home-wifi" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Whole-Home Wi-Fi</h2>
+        <p class="text-slate-600 mb-6">We plan Wi-Fi coverage around your home's actual layout — not just where the router happens to sit — so signal reaches the rooms, yard, and garage you actually use.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Mesh Wi-Fi systems</li>
+          <li class="feature-item">Wired access points</li>
+          <li class="feature-item">Dead-zone correction</li>
+          <li class="feature-item">Outdoor Wi-Fi coverage</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_2117320883.jpeg')} alt="Technician terminating structured network cabling" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Troubleshooting (light gray) -->
+  <section id="troubleshooting" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="order-2 lg:order-1">
+        <img src={withBase('/images/AdobeStock_2029345533.jpeg')} alt="Technician diagnosing network equipment" class="rounded-2xl w-full shadow-card" />
+      </div>
+      <div class="order-1 lg:order-2">
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Wi-Fi Troubleshooting</h2>
+        <p class="text-slate-600 mb-6">Devices constantly dropping, slow speeds in certain rooms, or a network that "used to work fine" — we diagnose the actual cause instead of just suggesting you restart the router again.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Device connectivity troubleshooting</li>
+          <li class="feature-item">Interference &amp; congestion diagnosis</li>
+          <li class="feature-item">Router &amp; equipment placement review</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-outline">Request Service</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ethernet (white) -->
+  <section id="ethernet" class="bg-white py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Ethernet &amp; Wired Networking</h2>
+        <p class="text-slate-600 mb-6">Need reliable Ethernet in your office or media room? Wired connections are still the most reliable option for the devices that need them. We run clean, properly terminated cabling and keep it organized.</p>
+        <ul class="mb-8">
+          <li class="feature-item">Ethernet installation</li>
+          <li class="feature-item">Network switches &amp; PoE networking</li>
+          <li class="feature-item">Network racks &amp; equipment organization</li>
+          <li class="feature-item">Structured cable cleanup</li>
+        </ul>
+        <a href={withBase('/contact?type=residential')} class="btn-outline">Request Service</a>
+      </div>
+      <img src={withBase('/images/AdobeStock_1909113338.jpeg')} alt="Technician wiring a network connection" class="rounded-2xl w-full shadow-card" />
+    </div>
+  </section>
+
+  <!-- Home office (light gray) -->
+  <section id="home-office" class="bg-slate-50 py-20 scroll-mt-24">
+    <div class="container mx-auto px-4 text-center max-w-2xl mx-auto">
+      <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">Home Office Networking</h2>
+      <p class="text-slate-600 mb-6">Working from home shouldn't mean fighting your Wi-Fi. We set up reliable connectivity, Ethernet, and cable management for a home office that actually holds up to video calls and real work.</p>
+      <a href={withBase('/contact?type=residential')} class="btn-primary">Request Service</a>
+    </div>
+  </section>
+
+  <ProcessSteps dark={true} heading="Every Network Gets the Same Process" subheading="Assessment to support — whether it's one dead zone or a full rewire." />
+
+  <FaqAccordion heading="Wi-Fi & Networking FAQ" faqs={faqs} />
+
+  <CtaBanner heading="Tell us where your Wi-Fi isn't reaching." sub="We'll assess your property and recommend what will actually fix it." href="/contact?type=residential" />
+</BaseLayout>

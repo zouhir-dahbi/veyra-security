@@ -9,11 +9,12 @@ const year = new Date().getFullYear();
   <div class="container mx-auto px-4 py-16">
     <div class="grid md:grid-cols-4 gap-10 mb-12">
       <div class="md:col-span-1">
-        <a href={withBase('/')} class="inline-flex mb-4">
-          <img src={withBase('/images/vss-horizontal-white-transparent.png')} alt="Veyra Security Systems" class="h-14 w-auto" />
+        <a href={withBase('/')} class="inline-flex flex-col leading-none mb-4">
+          <span class="font-display font-bold text-2xl text-white tracking-tight">{site.shortName}</span>
+          <span class="text-[10px] font-semibold text-primary-light tracking-[0.2em] uppercase">Home Technology</span>
         </a>
         <p class="text-sm text-slate-400">
-          Professional security camera and access-control systems for homes and businesses throughout Northern Virginia.
+          Smart home, Wi-Fi, security, and technology installation for homes and small businesses throughout Northern Virginia.
         </p>
       </div>
 
@@ -21,8 +22,7 @@ const year = new Date().getFullYear();
         <h4 class="font-display font-semibold text-white text-lg mb-4">Quick Links</h4>
         <ul class="space-y-2 text-sm">
           <li><a href={withBase('/')} class="hover:text-primary-light transition-colors">Home</a></li>
-          <li><a href={withBase('/residential')} class="hover:text-primary-light transition-colors">Residential</a></li>
-          <li><a href={withBase('/commercial')} class="hover:text-primary-light transition-colors">Commercial</a></li>
+          <li><a href={withBase('/small-business')} class="hover:text-primary-light transition-colors">Small Business</a></li>
           <li><a href={withBase('/service-areas')} class="hover:text-primary-light transition-colors">Service Areas</a></li>
           <li><a href={withBase('/about')} class="hover:text-primary-light transition-colors">About</a></li>
         </ul>
@@ -31,11 +31,10 @@ const year = new Date().getFullYear();
       <div>
         <h4 class="font-display font-semibold text-white text-lg mb-4">Services</h4>
         <ul class="space-y-2 text-sm">
-          <li><a href={withBase('/services#cameras')} class="hover:text-primary-light transition-colors">Security Cameras</a></li>
-          <li><a href={withBase('/services#access-control')} class="hover:text-primary-light transition-colors">Access Control</a></li>
-          <li><a href={withBase('/services#upgrades')} class="hover:text-primary-light transition-colors">Security System Upgrades</a></li>
-          <li><a href={withBase('/services#maintenance')} class="hover:text-primary-light transition-colors">Maintenance &amp; Support</a></li>
-          <li><a href={withBase('/services#assessments')} class="hover:text-primary-light transition-colors">Security Assessments</a></li>
+          <li><a href={withBase('/smart-home')} class="hover:text-primary-light transition-colors">Smart Home</a></li>
+          <li><a href={withBase('/wifi-networking')} class="hover:text-primary-light transition-colors">Wi-Fi &amp; Networking</a></li>
+          <li><a href={withBase('/security')} class="hover:text-primary-light transition-colors">Security</a></li>
+          <li><a href={withBase('/installation')} class="hover:text-primary-light transition-colors">Installation</a></li>
         </ul>
       </div>
 
@@ -55,14 +54,14 @@ const year = new Date().getFullYear();
             </a>
           </li>
           <li>
-            <a href={withBase('/contact')} class="btn-primary text-sm mt-1">Schedule an Assessment</a>
+            <a href={withBase('/contact')} class="btn-primary text-sm mt-1">Request Service</a>
           </li>
         </ul>
       </div>
     </div>
 
     <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-500">
-      <p>&copy; {year} Veyra Security Systems. All rights reserved.</p>
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>

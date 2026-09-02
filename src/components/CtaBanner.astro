@@ -9,7 +9,7 @@ const {
   heading,
   sub,
   href = '/contact',
-  label = 'Schedule a Security Assessment',
+  label = 'Request Service',
 } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const fullHref = href.startsWith('http') ? href : `${base}${href}`;

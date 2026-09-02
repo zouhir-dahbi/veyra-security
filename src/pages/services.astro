@@ -1,100 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import CtaBanner from '../components/CtaBanner.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const withBase = (h: string) => (h.startsWith('http') ? h : `${base}${h}`);
 
-const sections = [
-  {
-    id: 'cameras',
-    title: 'Security Cameras',
-    body: 'Professionally planned, PoE-based camera systems with NVR recording and remote viewing. We design coverage around your property first, then select equipment to match — not the other way around.',
-    img: '/images/AdobeStock_1282055483.jpeg',
-    alt: 'Security camera mounted on a building exterior',
-    links: [['For Homes', '/residential#cameras'], ['For Businesses', '/commercial#cameras']],
-  },
-  {
-    id: 'access-control',
-    title: 'Access Control',
-    body: 'Electronic entry, smart locks, mobile credentials, and access management — sized to fit anything from a single front door to a multi-door commercial property.',
-    img: '/images/AdobeStock_769078732.jpeg',
-    alt: 'Unlocking a smart door lock with a mobile phone',
-    links: [['For Homes', '/residential#access-control'], ['For Businesses', '/commercial#access-control']],
-    reverse: true,
-  },
-  {
-    id: 'upgrades',
-    title: 'Security System Upgrades',
-    body: "Modernizing an aging or unreliable system — residential or commercial — without starting from zero. We assess what's already in place before recommending what to replace.",
-    img: '/images/AdobeStock_1909113338.jpeg',
-    alt: 'Technician working on wiring during a system upgrade',
-    links: [['For Homes', '/residential#upgrades'], ['For Businesses', '/commercial#upgrades']],
-  },
-  {
-    id: 'maintenance',
-    title: 'Maintenance & Support',
-    body: 'Ongoing reliability for systems already in place — health checks, permission updates, and a point of contact when something needs attention.',
-    img: '/images/AdobeStock_2029345533.jpeg',
-    alt: 'Technician servicing security system equipment',
-    links: [['Learn More', '/commercial#maintenance']],
-    reverse: true,
-  },
-  {
-    id: 'assessments',
-    title: 'Security Assessments',
-    body: "A no-pressure, in-person look at your property. We ask about how you use the space and what concerns you, then design a system — you don't need to know equipment specifications ahead of time.",
-    img: '/images/AdobeStock_1829282770.jpeg',
-    alt: 'Technician and homeowner discussing a security assessment',
-    links: [['Schedule a Security Assessment', '/contact']],
-    primary: true,
-  },
+const pillars = [
+  ['Smart Home', 'Smart locks, doorbells, thermostats, lighting, and automation, installed and configured to work together.', '/smart-home',
+    'M13 10V3L4 14h7v7l9-11h-7z'],
+  ['Wi-Fi & Networking', 'Whole-home Wi-Fi, dead-zone correction, Ethernet, and network cleanup for homes and small businesses.', '/wifi-networking',
+    'M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01M4.929 12.929a10 10 0 0114.142 0M1.5 9.5a15 15 0 0121 0'],
+  ['Security', 'Security cameras, PoE systems, camera upgrades, and smart security for homes and small businesses.', '/security',
+    'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'],
+  ['Installation', 'TV mounting, wire and cable management, and clean installation of technology throughout your property.', '/installation',
+    'M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2'],
 ];
 ---
 
 <BaseLayout
-  title="Our Services | Veyra Security Systems"
-  description="Security cameras, access control, system upgrades, maintenance, and security assessments for homes and businesses in Northern Virginia."
+  title="Our Services | Veyra Home Technology"
+  description="Smart home, Wi-Fi and networking, security, and technology installation services for homes and small businesses in Northern Virginia."
 >
   <PageHeader
     title="Our Services"
-    sub="Everything we do, in plain terms. For how each service applies specifically to your home or business, see our Residential and Commercial pages."
+    sub="Four areas, one team. For small-business-specific needs, see our Small Business page."
   />
 
-  {sections.map((s, i) => (
-    <section id={s.id} class:list={[i % 2 === 0 ? 'bg-white' : 'bg-slate-50', 'py-20 scroll-mt-24']}>
-      <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-        <div class:list={[s.reverse && 'order-2 lg:order-1']}>
-          {s.reverse ? (
-            <img src={withBase(s.img)} alt={s.alt} class="rounded-2xl w-full shadow-card" />
-          ) : (
-            <>
-              <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">{s.title}</h2>
-              <p class="text-slate-600 mb-6">{s.body}</p>
-              <div class="flex flex-wrap gap-3">
-                {s.links.map(([label, href]) => (
-                  <a href={withBase(href)} class:list={[s.primary ? 'btn-primary' : 'btn-outline']}>{label}</a>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-        <div class:list={[s.reverse && 'order-1 lg:order-2']}>
-          {s.reverse ? (
-            <>
-              <h2 class="font-display font-bold text-3xl md:text-4xl text-ink mb-4">{s.title}</h2>
-              <p class="text-slate-600 mb-6">{s.body}</p>
-              <div class="flex flex-wrap gap-3">
-                {s.links.map(([label, href]) => (
-                  <a href={withBase(href)} class="btn-outline">{label}</a>
-                ))}
-              </div>
-            </>
-          ) : (
-            <img src={withBase(s.img)} alt={s.alt} class="rounded-2xl w-full shadow-card" />
-          )}
-        </div>
-      </div>
-    </section>
-  ))}
+  <section class="bg-white py-20">
+    <div class="container mx-auto px-4 grid sm:grid-cols-2 gap-8">
+      {pillars.map(([title, body, href, icon]) => (
+        <a href={withBase(href)} class="card card-hover p-8">
+          <div class="w-12 h-12 mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon} /></svg>
+          </div>
+          <h2 class="font-display font-bold text-2xl text-ink mb-2">{title}</h2>
+          <p class="text-slate-600">{body}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <CtaBanner heading="Not sure which category fits? Just tell us what you need." />
 </BaseLayout>

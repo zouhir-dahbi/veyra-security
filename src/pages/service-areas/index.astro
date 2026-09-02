@@ -10,12 +10,12 @@ const groups = ['Loudoun County', 'Fairfax County & Area', 'Arlington'] as const
 ---
 
 <BaseLayout
-  title="Service Areas | Veyra Security Systems"
-  description="Veyra Security Systems provides professional security camera and access-control installation throughout Northern Virginia, including Loudoun County, Fairfax County, and Arlington."
+  title="Service Areas | Veyra Home Technology"
+  description="Veyra Home Technology provides smart-home, Wi-Fi and networking, security, and technology installation throughout Northern Virginia, including Loudoun County, Fairfax County, and Arlington."
 >
   <PageHeader
     title="Service Areas"
-    sub="Veyra Security Systems provides professional residential and commercial security installation across our Northern Virginia service territory."
+    sub="Veyra Home Technology provides smart-home, Wi-Fi and networking, security, and technology installation for homes and small businesses across our Northern Virginia service territory."
   />
 
   <section class="bg-white py-20">
@@ -28,7 +28,7 @@ const groups = ['Loudoun County', 'Fairfax County & Area', 'Arlington'] as const
             {serviceAreas.filter((a) => a.group === group).map((a) => (
               <a href={withBase(`/service-areas/${a.slug}`)} class="card card-hover p-6">
                 <h3 class="font-semibold text-lg text-ink mb-1">{a.city}, VA</h3>
-                <p class="text-sm text-slate-600">Security cameras &amp; access control for {a.city} homes and businesses</p>
+                <p class="text-sm text-slate-600">Smart home, Wi-Fi, security, and installation for {a.city} homes and businesses</p>
               </a>
             ))}
           </div>

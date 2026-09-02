@@ -27,7 +27,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Ashburn',
     group: 'Loudoun County',
     metaDescription:
-      'Professional security camera and access-control installation for homes and businesses in Ashburn, VA. Serving Ashburn and surrounding Loudoun County areas.',
+      'Smart home, Wi-Fi, security, and technology installation for homes and businesses in Ashburn, VA. Serving Ashburn and surrounding Loudoun County areas.',
     intro:
       "Ashburn has grown fast, and a lot of that growth is newer subdivisions and townhome communities where homeowners want coverage that looks intentional, not improvised. We design and install professional camera and access-control systems for Ashburn homes and businesses — including the offices and facilities along the Route 7 and Dulles Greenway corridors.",
     residential:
@@ -55,7 +55,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Leesburg',
     group: 'Loudoun County',
     metaDescription:
-      'Security cameras and access control for homes and businesses in Leesburg, VA. Serving historic Old Town Leesburg and surrounding neighborhoods.',
+      'Smart home, Wi-Fi, security, and technology installation for homes and businesses in Leesburg, VA. Serving historic Old Town Leesburg and surrounding neighborhoods.',
     intro:
       "Leesburg mixes a historic Old Town core of small shops and restaurants with newer suburban subdivisions and the rural edge of Loudoun's wine country. As the county seat, it also has a steady base of professional and government-adjacent offices. We serve homeowners and businesses across all of it.",
     residential:
@@ -83,7 +83,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Sterling',
     group: 'Loudoun County',
     metaDescription:
-      'Professional security cameras and access control in Sterling, VA. Serving Sterling homes, offices, and warehouse properties near Route 28 and Dulles Airport.',
+      'Smart home, Wi-Fi, security, and technology installation in Sterling, VA. Serving Sterling homes, offices, and warehouse properties near Route 28 and Dulles Airport.',
     intro:
       "Sterling sits right next to Washington Dulles International Airport, with a strong logistics, warehouse, and data-center corridor along Route 28 alongside established residential neighborhoods built from the 1980s onward. We handle both the commercial and residential sides.",
     residential:
@@ -111,7 +111,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Herndon',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Security cameras and access control for homes and businesses in Herndon, VA, near the Dulles Tech Corridor and Metro Silver Line.',
+      'Smart home, Wi-Fi, security, and technology installation for homes and businesses in Herndon, VA, near the Dulles Tech Corridor and Metro Silver Line.',
     intro:
       "Herndon pairs a historic small-town downtown with the tech and software office corridor along the Dulles Toll Road, and Metro Silver Line access has brought more density and development. We serve both the residential neighborhoods and the business corridor.",
     residential:
@@ -139,7 +139,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Reston',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Professional security systems for Reston, VA homes and businesses — townhomes, condos, and Reston Town Center offices and retail.',
+      'Smart home, Wi-Fi, security, and technology installation for Reston, VA homes and businesses — townhomes, condos, and Reston Town Center offices and retail.',
     intro:
       "Reston is a master-planned community with a high share of townhomes and condos, walkable village centers, and the mixed-use hub of Reston Town Center with its offices and retail. Metro Silver Line stations have added to the density. We serve homeowners and businesses throughout.",
     residential:
@@ -167,7 +167,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Chantilly',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Security cameras and access control in Chantilly, VA for homes and light-industrial properties, near Dulles Airport and the Route 50 corridor.',
+      'Smart home, Wi-Fi, security, and technology installation in Chantilly, VA for homes and light-industrial properties, near Dulles Airport and the Route 50 corridor.',
     intro:
       "Chantilly combines suburban residential subdivisions with a light-industrial and warehouse corridor, helped by its proximity to Dulles Airport. We serve both the neighborhoods and the commercial and light-industrial properties in the area.",
     residential:
@@ -195,7 +195,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Centreville',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Professional security cameras and access control for Centreville, VA homes and businesses along the Route 29 and Route 28 corridors.',
+      'Smart home, Wi-Fi, security, and technology installation for Centreville, VA homes and businesses along the Route 29 and Route 28 corridors.',
     intro:
       "Centreville is largely a family-oriented community of single-family homes and townhome neighborhoods, with commercial activity along the Route 29 and Route 28 corridors and a historic Centreville area. We serve homeowners and local businesses throughout.",
     residential:
@@ -223,7 +223,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Fairfax',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Security cameras and access control in the City of Fairfax, VA — established neighborhoods, Old Town Fairfax, and George Mason University-area properties.',
+      'Smart home, Wi-Fi, security, and technology installation in the City of Fairfax, VA — established neighborhoods, Old Town Fairfax, and George Mason University-area properties.',
     intro:
       "The City of Fairfax is an independent city with its own established single-family neighborhoods, the Old Town Fairfax historic district, and a notable base of off-campus rental housing near George Mason University. We serve homeowners, landlords, and businesses across the city.",
     residential:
@@ -251,7 +251,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Vienna',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Professional residential and commercial security in Vienna, VA — established neighborhoods near Tysons and the Vienna Main Street business district.',
+      'Smart home, Wi-Fi, security, and technology installation in Vienna, VA — established neighborhoods near Tysons and the Vienna Main Street business district.',
     intro:
       "Vienna is a quieter, established town of larger residential lots with the W&OD Trail running through it and a small-town Main Street business district — all right next to the major commercial hub of Tysons. We serve Vienna's homeowners and local businesses.",
     residential:
@@ -279,7 +279,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'McLean',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Premium residential and commercial security systems in McLean, VA, near the Tysons corporate and retail hub.',
+      'Smart home, Wi-Fi, security, and technology installation in McLean, VA, near the Tysons corporate and retail hub.',
     intro:
       "McLean is home to some of the region's most substantial residential properties and sits immediately next to the Tysons corporate and retail hub, giving it a mix of large executive homes and professional-services offices. We serve both ends of that spectrum.",
     residential:
@@ -307,7 +307,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Falls Church',
     group: 'Fairfax County & Area',
     metaDescription:
-      'Security cameras and access control in Falls Church, VA — the "Little City" — for walkable neighborhoods, local shops, and small businesses.',
+      'Smart home, Wi-Fi, security, and technology installation in Falls Church, VA — the "Little City" — for walkable neighborhoods, local shops, and small businesses.',
     intro:
       "Falls Church is a compact independent city — nicknamed “The Little City” — of roughly two square miles, with a walkable downtown of local shops and restaurants and ongoing mixed-use redevelopment along Route 7. It sits between Arlington and Fairfax County. We serve its homeowners and small businesses.",
     residential:
@@ -335,7 +335,7 @@ export const serviceAreas: ServiceArea[] = [
     city: 'Arlington',
     group: 'Arlington',
     metaDescription:
-      'Professional security cameras and access control in Arlington, VA for condos, offices, and mixed-use properties across the Rosslyn-Ballston and National Landing corridors.',
+      'Smart home, Wi-Fi, security, and technology installation in Arlington, VA for condos, offices, and mixed-use properties across the Rosslyn-Ballston and National Landing corridors.',
     intro:
       "Arlington is a dense, urban jurisdiction just across the Potomac from Washington, D.C., with high-rise condo and apartment corridors like Rosslyn-Ballston and National Landing, extensive Metro access, and a large office and government-adjacent employment base. Its housing skews heavily toward condos and apartments rather than detached homes.",
     residential:
